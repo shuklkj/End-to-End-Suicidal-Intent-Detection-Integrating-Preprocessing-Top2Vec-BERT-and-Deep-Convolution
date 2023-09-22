@@ -160,13 +160,84 @@ The final test accuracy will be printed at the end of the script.
 
 
 
+## Fine-tuned BERT Model for Depression Detection
+This repository provides a quick way to evaluate a fine-tuned BERT model specifically trained for depression detection using the provided test data.
+
+### Prerequisites
+Before running the code, ensure you have the following libraries installed:
+
+   1. torch
+   2. transformers
+   3. pandas
+   4. numpy
+   5. preprocessor
+   6. tqdm
+   7. pandarallel
+   8. sklearn
+
+### Model Architecture
+Our custom model, BertClassifier, uses a pre-trained BERT model, particularly a variation trained on a depression dataset. We've added several linear layers and dropout for regularization. The final output layer uses the sigmoid activation function, ideal for binary classification.
+
+### Data Preprocessing
+For the test data, we apply a custom_standardization function that cleans the data using the preprocessor library, converting the text to lowercase.
+
+### Evaluation
+The evaluate function is used to evaluate the model's performance on the test data. It calculates the accuracy of the model over the test dataset and returns the model's raw outputs.
+
+### Usage
+1. Load your trained BERT model.
+2. Use the provided test data or your dataset.
+3. Preprocess the test data using the custom_standardization function.
+4. Evaluate the model on the test data.
+5. Save the model's raw outputs to a CSV file.
+6. Analyze the model's predictions using the classification_report and confusion_matrix functions from sklearn.
+
+### Results
+The model's raw outputs are saved to model_output_test.csv. This file contains the predicted values for each class (0 and 1). You can then analyze the model's predictions in comparison with the actual labels.
 
 
+## Suicidal Intent Classification with TensorFlow
 
+This project implements a deep learning model for the classification of suicidal intent in text data using TensorFlow.
 
+### Overview
+1. Data is loaded and preprocessed using stemming with the NLTK Stemmer.
+2. The dataset's average sequence length is explored using visualizations.
+3. A TensorFlow data pipeline is created using the tf.data.Dataset for efficient processing.
+4. Text data is standardized and vectorized using the TextVectorization layer.
+5. A 1D convolutional neural network (CNN) model is defined and compiled.
+6. The model is trained, evaluated, and saved for later use.
+7. Performance metrics like ROC curve, AUC, precision, recall, and F-score are calculated.
+8. An end-to-end model is created for making predictions on raw text data.
 
+### Requirements
+1. Python Libraries: numpy, pandas, os, tensorflow, NLTK, seaborn, matplotlib, sklearn, preprocess_text, pandarallel
+2. Datasets: The dataset used is loaded through the preprocess_text script.
 
+### Usage
 
+#### 1. Data Loading & Preprocessing:
+   1. Data is loaded without standardization. Stemming is performed on the dataset using the NLTK Stemmer.
+   
+#### 2. Data Exploration:
+   1. Use seaborn plots to visualize the average sequence length of words in the dataset.
+
+#### 3. Creating TensorFlow Data Pipeline:
+   1. Convert the dataframes into tf.data.Dataset for efficient batch processing.
+   2. The data is standardized and vectorized using custom patterns and the TextVectorization layer.
+
+#### 4. Model Definition:
+   1. The model is a 1D CNN with an embedding layer, dropout layers, convolutional layers, global max pooling, and dense layers.
+
+#### 5. Training:
+   1. Train the model using the dataset. Model checkpoints and early stopping are implemented.
+
+#### 6. Evaluation:
+   1. Predictions are made on the validation dataset.
+   2. Performance metrics like the ROC curve, AUC, precision, recall, and F-score are calculated.
+
+#### 7. End-to-End Model:
+   1. An end-to-end model is demonstrated, which takes raw text data and predicts the suicidal intent.
 
 
 
